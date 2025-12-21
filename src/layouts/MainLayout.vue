@@ -22,11 +22,13 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import UIHeaderTop from '@/components/UI/header/top.vue';
 import UIHeaderBottom from '@/components/UI/header/bottom.vue';
 
 const theme = ref<'light' | 'dark'>('light');
 const language = ref<'ar' | 'en'>('ar');
+const { locale } = useI18n({ useScope: 'global' });
 
 const isDark = computed(() => theme.value === 'dark');
 const isRTL = computed(() => language.value === 'ar');
@@ -48,9 +50,16 @@ watch(theme, (value) => {
   localStorage.setItem('theme', value);
 });
 
-watch(language, (value) => {
-  localStorage.setItem('language', value);
-});
+watch(
+  language,
+  (value) => {
+    localStorage.setItem('language', value);
+    locale.value = value;
+    document.documentElement.setAttribute('dir', value === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', value);
+  },
+  { immediate: true }
+);
 
 onMounted(() => {
   const storedTheme = localStorage.getItem('theme');

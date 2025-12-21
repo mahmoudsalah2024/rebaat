@@ -1,0 +1,211 @@
+{
+  "layout": {
+    "header": {
+      "brandName": "رِبـاط",
+      "badge": "تجريبي"
+    }
+  },
+  "common": {
+    "actions": {
+      "viewDetails": "اطلع على التفاصيل",
+      "details": "تفاصيل",
+      "previous": "السابق",
+      "next": "التالي"
+    },
+    "filters": {
+      "all": "الكل"
+    },
+    "labels": {
+      "balance": "رصيد",
+      "income": "الأيرادات",
+      "expenses": "المصروفات",
+      "debt": "مديونية",
+      "responsible": "مسؤول"
+    },
+    "status": {
+      "scheduled": "مجدولة",
+      "completed": "مكتمل",
+      "postponed": "مؤجل"
+    },
+    "currency": {
+      "egp": "جنيه"
+    },
+    "theme": {
+      "lightMode": "الوضع الفاتح",
+      "darkMode": "الوضع الداكن"
+    },
+    "language": {
+      "arShort": "AR",
+      "enShort": "EN"
+    },
+    "billing": {
+      "monthly": "شهرية"
+    },
+    "format": {
+      "timeRange": "{start} — {end}"
+    }
+  },
+  "pages": {
+    "home": {
+      "accountSummaryLabel": "ملخص الحساب",
+      "title": "صندوق البيت",
+      "latestAlertsLabel": "آخر التنبيهات",
+      "alertsTitle": "تنبيهات",
+      "fastServicesLabel": "الخدمات السريعة",
+      "servicesTitle": "خدمات",
+      "comingSoonLabel": "قريباً",
+      "upcomingMaintenanceTitle": "أقرب مواعيد الصيانة",
+      "alerts": {
+        "elevator": {
+          "title": "تعليق المصعد الخارجي",
+          "description": "سيتم اصلاح المصعد الخارجي بدأً من 20 يوليو"
+        }
+      },
+      "upcoming": {
+        "date": "الاثنين 22 يوليو",
+        "description": "اصلاح ماتور المياه العلوي"
+      },
+      "quickActions": {
+        "orderMaintenance": "طلب صيانة",
+        "makeComplaint": "تقديم شكوى",
+        "maintenanceSchedule": "جدول الصيانة",
+        "cleanSchedule": "جدول النظافة"
+      }
+    },
+    "clean": {
+      "sectionLabel": "الخدمات الدورية",
+      "title": "جدول النظافة",
+      "table": {
+        "date": "التاريخ",
+        "startTime": "وقت البداية",
+        "endTime": "وقت النهاية",
+        "type": "النوع",
+        "status": "الحالة",
+        "responsible": "المسؤول"
+      },
+      "mobileSummary": "{type} — مسؤول: {responsible}",
+      "empty": "لا توجد مواعيد مطابقة",
+      "types": {
+        "propertyWipe": "مسح العقار",
+        "propertySweep": "كنس العقار",
+        "elevatorWipe": "مسح المصعد"
+      },
+      "responsible": {
+        "ahmedAli": "أحمد علي",
+        "monaHussein": "منى حسين",
+        "khaledMostafa": "خالد مصطفى"
+      }
+    },
+    "maintenance": {
+      "sectionLabel": "الخدمات الدورية",
+      "title": "جدول الصيانة",
+      "table": {
+        "date": "التاريخ",
+        "startTime": "وقت البداية",
+        "endTime": "وقت النهاية",
+        "type": "النوع",
+        "status": "الحالة",
+        "responsible": "المسؤول"
+      },
+      "mobileSummary": "{type} — مسؤول: {responsible}",
+      "empty": "لا توجد مواعيد مطابقة",
+      "types": {
+        "electrical": "صيانة كهرباء",
+        "plumbing": "سباكة",
+        "tankCleaning": "تنظيف خزان المياه"
+      },
+      "responsible": {
+        "ahmedAli": "أحمد علي",
+        "monaHussein": "منى حسين",
+        "khaledMostafa": "خالد مصطفى"
+      }
+    },
+    "moneyBox": {
+      "accountSummaryLabel": "ملخص الحساب",
+      "title": "صندوق البيت",
+      "accountDetailsLabel": "تفاصيل الحساب",
+      "transactionsTitle": "سجل الحركات",
+      "tabs": {
+        "income": "الأيرادات",
+        "expenses": "المصروفات",
+        "debt": "المديونية"
+      },
+      "table": {
+        "number": "الرقم",
+        "item": "البند",
+        "income": "الأيرادات",
+        "expenses": "المصروفات",
+        "debt": "المديونية"
+      }
+    }
+  },
+  "forms": {
+    "makeComplaint": {
+      "sectionLabel": "خدمة سريعة",
+      "title": "تقديم شكوى",
+      "fields": {
+        "fullName": "الاسم بالكامل",
+        "phone": "رقم الهاتف",
+        "email": "البريد الإلكتروني",
+        "apartmentNumber": "رقم الشقة",
+        "complaintType": "نوع المشكلة",
+        "problemDescription": "الوصف",
+        "complaintDate": "تاريخ حدوث المشكلة",
+        "complaintTime": "وقت حدوث المشكلة",
+        "notes": "ملاحظات إضافية"
+      },
+      "options": {
+        "selectType": "اختر النوع",
+        "resident": "ساكن",
+        "worker": "عامل",
+        "externalWorker": "عامل من الخارج",
+        "collector": "مُحصل",
+        "other": "أخرى"
+      },
+      "submit": "إرسال المشكلة"
+    },
+    "orderMaintenance": {
+      "sectionLabel": "خدمة سريعة",
+      "title": "طلب صيانة",
+      "fields": {
+        "fullName": "الاسم بالكامل",
+        "phone": "رقم الهاتف",
+        "email": "البريد الإلكتروني",
+        "apartmentNumber": "رقم الشقة",
+        "maintenanceType": "نوع الصيانة",
+        "problemDescription": "الوصف",
+        "priority": "الأولوية",
+        "room": "المكان",
+        "visitDate": "تاريخ الزيارة",
+        "visitTime": "وقت الزيارة",
+        "notes": "ملاحظات إضافية"
+      },
+      "options": {
+        "selectType": "اختر النوع",
+        "electrical": "كهرباء",
+        "plumbing": "سباكة",
+        "painting": "دهان",
+        "carpentry": "نجارة",
+        "airConditioning": "تكييف",
+        "other": "أخرى",
+        "priority": {
+          "normal": "عادي",
+          "urgent": "عاجل",
+          "emergency": "طارئ"
+        },
+        "room": {
+          "livingRoom": "غرفة المعيشة",
+          "kitchen": "المطبخ",
+          "bathroom": "الحمام",
+          "bedroom": "غرفة النوم",
+          "other": "أخرى"
+        },
+        "visitTime": {
+          "morning": "صباحاً",
+          "evening": "مساءً"
+        }
+      },
+      "submit": "إرسال الطلب"
+    }
+  }
+}

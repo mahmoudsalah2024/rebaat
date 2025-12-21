@@ -1,0 +1,211 @@
+{
+  "layout": {
+    "header": {
+      "brandName": "Rebaat",
+      "badge": "Beta"
+    }
+  },
+  "common": {
+    "actions": {
+      "viewDetails": "View details",
+      "details": "Details",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "filters": {
+      "all": "All"
+    },
+    "labels": {
+      "balance": "Balance",
+      "income": "Income",
+      "expenses": "Expenses",
+      "debt": "Debt",
+      "responsible": "Responsible"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "postponed": "Postponed"
+    },
+    "currency": {
+      "egp": "EGP"
+    },
+    "theme": {
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode"
+    },
+    "language": {
+      "arShort": "AR",
+      "enShort": "EN"
+    },
+    "billing": {
+      "monthly": "Monthly"
+    },
+    "format": {
+      "timeRange": "{start} — {end}"
+    }
+  },
+  "pages": {
+    "home": {
+      "accountSummaryLabel": "Account Summary",
+      "title": "House Fund",
+      "latestAlertsLabel": "Latest Alerts",
+      "alertsTitle": "Alerts",
+      "fastServicesLabel": "Quick Services",
+      "servicesTitle": "Services",
+      "comingSoonLabel": "Coming Soon",
+      "upcomingMaintenanceTitle": "Upcoming Maintenance",
+      "alerts": {
+        "elevator": {
+          "title": "External elevator outage",
+          "description": "The external elevator will be repaired starting July 20"
+        }
+      },
+      "upcoming": {
+        "date": "Monday, 22 July",
+        "description": "Upper water pump repair"
+      },
+      "quickActions": {
+        "orderMaintenance": "Maintenance Request",
+        "makeComplaint": "Submit Complaint",
+        "maintenanceSchedule": "Maintenance Schedule",
+        "cleanSchedule": "Cleaning Schedule"
+      }
+    },
+    "clean": {
+      "sectionLabel": "Recurring Services",
+      "title": "Cleaning Schedule",
+      "table": {
+        "date": "Date",
+        "startTime": "Start Time",
+        "endTime": "End Time",
+        "type": "Type",
+        "status": "Status",
+        "responsible": "Responsible"
+      },
+      "mobileSummary": "{type} — Responsible: {responsible}",
+      "empty": "No matching appointments",
+      "types": {
+        "propertyWipe": "Property Wiping",
+        "propertySweep": "Property Sweeping",
+        "elevatorWipe": "Elevator Wiping"
+      },
+      "responsible": {
+        "ahmedAli": "Ahmed Ali",
+        "monaHussein": "Mona Hussein",
+        "khaledMostafa": "Khaled Mostafa"
+      }
+    },
+    "maintenance": {
+      "sectionLabel": "Recurring Services",
+      "title": "Maintenance Schedule",
+      "table": {
+        "date": "Date",
+        "startTime": "Start Time",
+        "endTime": "End Time",
+        "type": "Type",
+        "status": "Status",
+        "responsible": "Responsible"
+      },
+      "mobileSummary": "{type} — Responsible: {responsible}",
+      "empty": "No matching appointments",
+      "types": {
+        "electrical": "Electrical Maintenance",
+        "plumbing": "Plumbing",
+        "tankCleaning": "Water Tank Cleaning"
+      },
+      "responsible": {
+        "ahmedAli": "Ahmed Ali",
+        "monaHussein": "Mona Hussein",
+        "khaledMostafa": "Khaled Mostafa"
+      }
+    },
+    "moneyBox": {
+      "accountSummaryLabel": "Account Summary",
+      "title": "House Fund",
+      "accountDetailsLabel": "Account Details",
+      "transactionsTitle": "Transaction Log",
+      "tabs": {
+        "income": "Income",
+        "expenses": "Expenses",
+        "debt": "Debt"
+      },
+      "table": {
+        "number": "No.",
+        "item": "Item",
+        "income": "Income",
+        "expenses": "Expenses",
+        "debt": "Debt"
+      }
+    }
+  },
+  "forms": {
+    "makeComplaint": {
+      "sectionLabel": "Quick Service",
+      "title": "Submit Complaint",
+      "fields": {
+        "fullName": "Full name",
+        "phone": "Phone number",
+        "email": "Email",
+        "apartmentNumber": "Apartment number",
+        "complaintType": "Issue type",
+        "problemDescription": "Description",
+        "complaintDate": "Issue date",
+        "complaintTime": "Issue time",
+        "notes": "Additional notes"
+      },
+      "options": {
+        "selectType": "Select type",
+        "resident": "Resident",
+        "worker": "Worker",
+        "externalWorker": "External worker",
+        "collector": "Collector",
+        "other": "Other"
+      },
+      "submit": "Submit issue"
+    },
+    "orderMaintenance": {
+      "sectionLabel": "Quick Service",
+      "title": "Maintenance Request",
+      "fields": {
+        "fullName": "Full name",
+        "phone": "Phone number",
+        "email": "Email",
+        "apartmentNumber": "Apartment number",
+        "maintenanceType": "Maintenance type",
+        "problemDescription": "Description",
+        "priority": "Priority",
+        "room": "Location",
+        "visitDate": "Visit date",
+        "visitTime": "Visit time",
+        "notes": "Additional notes"
+      },
+      "options": {
+        "selectType": "Select type",
+        "electrical": "Electrical",
+        "plumbing": "Plumbing",
+        "painting": "Painting",
+        "carpentry": "Carpentry",
+        "airConditioning": "Air conditioning",
+        "other": "Other",
+        "priority": {
+          "normal": "Normal",
+          "urgent": "Urgent",
+          "emergency": "Emergency"
+        },
+        "room": {
+          "livingRoom": "Living room",
+          "kitchen": "Kitchen",
+          "bathroom": "Bathroom",
+          "bedroom": "Bedroom",
+          "other": "Other"
+        },
+        "visitTime": {
+          "morning": "Morning",
+          "evening": "Evening"
+        }
+      },
+      "submit": "Submit request"
+    }
+  }
+}
