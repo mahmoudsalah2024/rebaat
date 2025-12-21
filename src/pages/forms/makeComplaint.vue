@@ -1,11 +1,11 @@
 <template>
   <MainLayout>
-    <div class="space-y-6" dir="rtl">
+    <div class="space-y-6">
       <section class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">خدمة سريعة</p>
-            <h1 class="mt-2 text-2xl font-bold">تقديم شكوى</h1>
+            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">{{ $t('forms.makeComplaint.sectionLabel') }}</p>
+            <h1 class="mt-2 text-2xl font-bold">{{ $t('forms.makeComplaint.title') }}</h1>
           </div>
         </div>
       </section>
@@ -14,62 +14,62 @@
         <div class="grid gap-6 md:grid-cols-2">
           <!-- الاسم -->
           <div class="space-y-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">الاسم بالكامل</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.fullName') }}</label>
             <input v-model="form.fullName" type="text" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" required />
           </div>
 
           <!-- الهاتف -->
           <div class="space-y-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">رقم الهاتف</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.phone') }}</label>
             <input v-model="form.phone" type="tel" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" required />
           </div>
 
           <!-- البريد -->
           <div class="space-y-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">البريد الإلكتروني</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.email') }}</label>
             <input v-model="form.email" type="email" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" />
           </div>
 
           <!-- تفاصيل العقار -->
           <div class="space-y-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">رقم الشقة</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.apartmentNumber') }}</label>
             <input v-model="form.apartmentNumber" type="text" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" />
           </div>
 
           <!-- نوع المشكلة -->
           <div class="space-y-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">نوع المشكلة</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.complaintType') }}</label>
             <select v-model="form.complaintType" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200">
-              <option value="">اختر النوع</option>
-              <option value="ساكن">ساكن</option>
-              <option value="عامل">عامل</option>
-              <option value="عامل من الخارج">عامل من الخارج</option>
-              <option value="مُحصل">مُحصل</option>
-              <option value="أخرى">أخرى</option>
+              <option value="">{{ $t('forms.makeComplaint.options.selectType') }}</option>
+              <option value="resident">{{ $t('forms.makeComplaint.options.resident') }}</option>
+              <option value="worker">{{ $t('forms.makeComplaint.options.worker') }}</option>
+              <option value="externalWorker">{{ $t('forms.makeComplaint.options.externalWorker') }}</option>
+              <option value="collector">{{ $t('forms.makeComplaint.options.collector') }}</option>
+              <option value="other">{{ $t('forms.makeComplaint.options.other') }}</option>
             </select>
           </div>
 
           <!-- وصف المشكلة -->
           <div class="space-y-2 md:col-span-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">الوصف</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.problemDescription') }}</label>
             <textarea v-model="form.problemDescription" rows="4" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"></textarea>
           </div>
 
           <!-- التاريخ والوقت -->
           <div class="grid gap-4 md:col-span-2 md:grid-cols-2">
             <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">تاريخ حدوث المشكلة</label>
+              <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.complaintDate') }}</label>
               <input v-model="form.complaintDate" type="date" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" />
             </div>
-                        <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">وقت حدوث المشكلة</label>
+            <div class="space-y-2">
+              <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.complaintTime') }}</label>
               <input v-model="form.complaintTime" type="time" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" />
             </div>
-                      </div>
+          </div>
 
           <!-- ملاحظات -->
           <div class="space-y-2 md:col-span-2">
-            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">ملاحظات إضافية</label>
+            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">{{ $t('forms.makeComplaint.fields.notes') }}</label>
             <textarea v-model="form.notes" rows="3" class="w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-700 shadow-sm transition focus:border-emerald-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"></textarea>
           </div>
         </div>
@@ -77,8 +77,8 @@
         <!-- زر الإرسال -->
         <div class="mt-8 flex justify-end">
           <button type="submit" class="rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700">
-            إرسال المشكلة
-                      </button>
+            {{ $t('forms.makeComplaint.submit') }}
+          </button>
         </div>
       </form>
     </div>
@@ -86,18 +86,18 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
-import MainLayout from '@/layouts/MainLayout.vue'
+import { ref } from 'vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 interface ComplaintForm {
-  fullName: string
-  phone: string
-  email: string
-  apartmentNumber: string
-  complaintType: string
-  problemDescription: string
-  complaintDate: string
-  complaintTime: string
-  notes: string
+  fullName: string;
+  phone: string;
+  email: string;
+  apartmentNumber: string;
+  complaintType: string;
+  problemDescription: string;
+  complaintDate: string;
+  complaintTime: string;
+  notes: string;
 }
 
 const form = ref<ComplaintForm>({
@@ -110,10 +110,10 @@ const form = ref<ComplaintForm>({
   complaintDate: '',
   complaintTime: '',
   notes: ''
-})
+});
 
 const handleSubmit = () => {
-  console.log('Form submitted:', form.value)
+  console.log('Form submitted:', form.value);
   // تقدر تبعت الداتا هنا بـ fetch أو axios للـ API
-}
+};
 </script>

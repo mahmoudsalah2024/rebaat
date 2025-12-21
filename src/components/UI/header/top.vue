@@ -23,8 +23,8 @@
 
                 <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="whitespace-nowrap text-lg font-semibold text-slate-900 dark:text-slate-100">
-                        رِبـاط
-                        <v-badge color="warning" content="تجريبي" text-color="white" inline></v-badge>
+                        {{ $t('layout.header.brandName') }}
+                        <v-badge color="warning" :content="$t('layout.header.badge')" text-color="white" inline></v-badge>
                     </span>
                 </a>
 
@@ -33,12 +33,12 @@
                     <button
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
                         type="button" @click="emit('toggle-theme')">
-                        {{ theme === 'dark' ? 'Light Mode' : 'Dark Mode' }}
+                        {{ theme === 'dark' ? $t('common.theme.lightMode') : $t('common.theme.darkMode') }}
                     </button>
                     <button
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
                         type="button" @click="emit('toggle-language')">
-                        {{ language === 'ar' ? 'EN' : 'AR' }}
+                        {{ language === 'ar' ? $t('common.language.enShort') : $t('common.language.arShort') }}
                     </button>
                 </div>
             </div>

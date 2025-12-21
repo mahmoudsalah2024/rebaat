@@ -24,5 +24,10 @@ export default defineConfigWithVueTs(
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
+  {
+    rules: {
+      'vue/no-bare-strings-in-template': 'warn',
+    },
+  },
   skipFormatting,
 )
