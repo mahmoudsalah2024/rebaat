@@ -118,8 +118,8 @@
     </header>
 
     <main>
-      <!-- Why Rabat Section -->
-      <section class="bg-white py-16 dark:bg-slate-900" id="why-rabat">
+      <!-- Why Rabaat Section -->
+      <section class="bg-white py-16 dark:bg-slate-900" id="why-Rabaat">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div class="text-center">
             <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">{{ content.why.label }}</p>
@@ -351,7 +351,7 @@
           <p class="mt-1 text-xs text-slate-400">{{ content.brand.tagline }}</p>
         </div>
         <div class="flex flex-wrap items-center gap-4 text-sm">
-          <a class="transition hover:text-white" href="#why-rabat">{{ content.footer.links.why }}</a>
+          <a class="transition hover:text-white" href="#why-Rabaat">{{ content.footer.links.why }}</a>
           <a class="transition hover:text-white" href="#features-management">{{ content.footer.links.management }}</a>
           <a class="transition hover:text-white" href="#features-residents">{{ content.footer.links.residents }}</a>
           <a class="transition hover:text-white" href="#security">{{ content.footer.links.security }}</a>
@@ -362,14 +362,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 
 // Theme logic
 const theme = ref('light');
 const isDark = computed(() => theme.value === 'dark');
 
-const setTheme = (value) => {
+const setTheme = (value: any) => {
   theme.value = value;
 };
 
@@ -378,7 +378,7 @@ const toggleTheme = () => {
 };
 
 // Language logic
-const language = ref('ar');
+const language:any = ref('ar');
 const isRTL = computed(() => language.value === 'ar');
 
 const toggleLanguage = () => {
@@ -416,7 +416,7 @@ const messages = {
       ],
       monthlyCard: {
         label: 'مصروفات الشهر',
-        value: '120,450 ر.س',
+        value: '120,450 ج.م',
         badge: 'متابعة مباشرة'
       },
       alert: {
@@ -517,8 +517,8 @@ const messages = {
       title: 'تحصيل الرسوم والإيجارات بسهولة',
       description: 'نظام تحصيل آمن يدعم الرسوم الشهرية والإيجارات مع سجل كامل للمدفوعات.',
       cards: [
-        { label: 'رسوم شهرية', value: '600 ر.س', badge: 'تم الدفع' },
-        { label: 'إيجار شهري', value: '2,200 ر.س', badge: 'قيد التحصيل' },
+        { label: 'رسوم شهرية', value: '600 ج.م', badge: 'تم الدفع' },
+        { label: 'إيجار شهري', value: '2,200 ج.م', badge: 'قيد التحصيل' },
         { label: 'تاريخ المدفوعات', value: 'محدث تلقائياً', badge: 'أرشفة ذكية' }
       ],
       dashboard: {
@@ -575,13 +575,13 @@ const messages = {
         residents: 'السكان',
         security: 'الأمان'
       },
-      copyright: '© 2024 Rabat. جميع الحقوق محفوظة.'
+      copyright: '© 2024 Rabaat. جميع الحقوق محفوظة.'
     }
   },
   en: {
     brand: {
       logo: 'R',
-      name: 'Rabat',
+      name: 'Rabaat',
       tagline: 'Smart property management platform'
     },
     nav: {
@@ -595,10 +595,10 @@ const messages = {
     },
     hero: {
       badge: 'An integrated platform for managing residential communities',
-      title: 'Rabat',
+      title: 'Rabaat',
       subtitle: 'Property unites us, decisions connect us',
       description:
-        'Rabat is an intelligent system that connects management with residents, ensures expense transparency, and saves time through centralized dashboards for daily operations and decisions.',
+        'Rabaat is an intelligent system that connects management with residents, ensures expense transparency, and saves time through centralized dashboards for daily operations and decisions.',
       primaryCta: 'Get Started',
       secondaryCta: 'Request a Demo',
       stats: [
@@ -608,7 +608,7 @@ const messages = {
       ],
       monthlyCard: {
         label: 'Monthly expenses',
-        value: 'SAR 120,450',
+        value: 'EGP 120,450',
         badge: 'Live tracking'
       },
       alert: {
@@ -629,7 +629,7 @@ const messages = {
       }
     },
     why: {
-      label: 'Why Rabat?',
+      label: 'Why Rabaat?',
       title: 'A system that makes property management easy and transparent',
       description: 'Everything management and residents need in one platform to organize daily operations and unify decisions.',
       cards: [
@@ -703,8 +703,8 @@ const messages = {
       title: 'Collect fees and rent easily',
       description: 'A secure collection system for monthly fees and rent with a full payment history.',
       cards: [
-        { label: 'Monthly fees', value: 'SAR 600', badge: 'Paid' },
-        { label: 'Monthly rent', value: 'SAR 2,200', badge: 'Pending' },
+        { label: 'Monthly fees', value: 'EGP 600', badge: 'Paid' },
+        { label: 'Monthly rent', value: 'EGP 2,200', badge: 'Pending' },
         { label: 'Payment history', value: 'Auto-updated', badge: 'Smart archiving' }
       ],
       dashboard: {
@@ -750,18 +750,18 @@ const messages = {
     },
     cta: {
       title: 'Turn your property management into a smart experience today',
-      description: 'Start with Rabat and enjoy instant communication, clear reports, and a seamless experience for teams and residents.',
+      description: 'Start with Rabaat and enjoy instant communication, clear reports, and a seamless experience for teams and residents.',
       primaryCta: 'Get Started',
       secondaryCta: 'Request a Demo'
     },
     footer: {
       links: {
-        why: 'Why Rabat',
+        why: 'Why Rabaat',
         management: 'Management',
         residents: 'Residents',
         security: 'Security'
       },
-      copyright: '© 2024 Rabat. All rights reserved.'
+      copyright: '© 2024 Rabaat. All rights reserved.'
     }
   }
 };
