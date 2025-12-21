@@ -1,86 +1,97 @@
 <template>
-    <MainLayout>
-        <div class="p-4 max-w-6xl mx-auto" dir="rtl">
-        <p class="text-xl font-bold pb-1">جدول النظافة</p>
-
-            <!-- الفلترة -->
-            <div class="flex flex-wrap gap-2 my-4">
-                <button v-for="s in statuses" :key="s" @click="selectedStatus = s"
-                    class="px-3 py-1 rounded-full text-sm font-medium border transition" :class="[
-                        selectedStatus === s
-                            ? 'bg-blue-600! text-white border-blue-600!'
-                            : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
-                    ]">
-                    {{ s }}
-                </button>
-                <button @click="selectedStatus = ''"
-                    class="px-3 py-1 rounded-full text-sm font-medium border bg-slate-50 hover:bg-slate-100 text-slate-700 ">
-                    الكل
-                </button>
-            </div>
-
-            <!-- جدول لأجهزة الكمبيوتر -->
-            <div class="hidden sm:block bg-white shadow rounded-lg overflow-x-auto">
-                <table class="min-w-full text-sm text-right">
-                    <thead class="bg-slate-100">
-                        <tr class="text-slate-600">
-                            <th class="px-4 py-3">التاريخ</th>
-                            <th class="px-4 py-3">وقت البداية</th>
-                            <th class="px-4 py-3">وقت النهاية</th>
-                            <th class="px-4 py-3">النوع</th>
-                            <th class="px-4 py-3">الحالة</th>
-                            <th class="px-4 py-3">المسؤول</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr v-for="(item, i) in filteredData" :key="i"
-                            class="hover:bg-slate-50">
-                            <td class="px-4 py-3">{{ item.date }}</td>
-                            <td class="px-4 py-3">{{ item.start }}</td>
-                            <td class="px-4 py-3">{{ item.end }}</td>
-                            <td class="px-4 py-3">{{ item.type }}</td>
-                            <td class="px-4 py-3">
-                                <span class="inline-block px-2 py-0.5 rounded-full text-xs font-medium"
-                                    :class="statusColor(item.status as 'مجدولة' | 'مكتمل' | 'مؤجل')">
-                                    {{ item.status }}
-                                </span>
-                            </td>
-                            <td class="px-4 py-3">{{ item.responsible }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- بطاقات للموبايل -->
-            <div class="block md:hidden space-y-3">
-                <div v-for="(item, i) in filteredData" :key="i"
-                    class="bg-white shadow rounded-lg p-4 mb-2">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="text-sm font-medium">{{ item.date }}</div>
-                            <div class="text-xs text-slate-500">
-                                {{ item.type }} — مسؤول: {{ item.responsible }}
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-sm">{{ item.start }} — {{ item.end }}</div>
-                            <div>
-                                <span class="inline-block mt-2 px-2 py-0.5 rounded-full text-xs font-medium"
-                                    :class="statusColor(item.status as 'مجدولة' | 'مكتمل' | 'مؤجل')">
-                                    {{ item.status }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- في حال مفيش نتائج -->
-            <p v-if="filteredData.length === 0" class="text-center text-slate-500 mt-6">
-                لا توجد مواعيد مطابقة
-            </p>
+  <MainLayout>
+    <div class="space-y-6" dir="rtl">
+      <section class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">الخدمات الدورية</p>
+            <h2 class="mt-2 text-2xl font-bold">جدول النظافة</h2>
+          </div>
         </div>
-    </MainLayout>
+                <!-- الفلترة -->
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button
+            v-for="s in statuses"
+            :key="s"
+            @click="selectedStatus = s"
+            class="rounded-full border px-4 py-2 text-xs font-semibold transition"
+            :class="[
+              selectedStatus === s
+                ? 'border-emerald-500 bg-emerald-600 text-white'
+                : 'border-slate-200 bg-white text-slate-700 hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300'
+            ]"
+          >
+            {{ s }}
+          </button>
+          <button
+            @click="selectedStatus = ''"
+            class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+          >
+            الكل
+          </button>
+        </div>
+      </section>
+            <!-- جدول لأجهزة الكمبيوتر -->
+      <div class="hidden overflow-x-auto rounded-3xl border border-slate-200/70 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:block">
+        <table class="min-w-full text-sm text-right">
+          <thead class="bg-emerald-600 text-white">
+            <tr>
+              <th class="px-4 py-3">التاريخ</th>
+              <th class="px-4 py-3">وقت البداية</th>
+              <th class="px-4 py-3">وقت النهاية</th>
+              <th class="px-4 py-3">النوع</th>
+              <th class="px-4 py-3">الحالة</th>
+              <th class="px-4 py-3">المسؤول</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            <tr v-for="(item, i) in filteredData" :key="i" class="bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950">
+              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ item.date }}</td>
+              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ item.start }}</td>
+              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ item.end }}</td>
+              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ item.type }}</td>
+              <td class="px-4 py-3">
+                <span class="inline-block rounded-full px-2 py-0.5 text-xs font-semibold" :class="statusColor(item.status as 'مجدولة' | 'مكتمل' | 'مؤجل')">
+                  {{ item.status }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ item.responsible }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+            <!-- بطاقات للموبايل -->
+      <div class="block space-y-4 sm:hidden">
+        <div
+          v-for="(item, i) in filteredData"
+          :key="i"
+          class="rounded-3xl border border-slate-200/70 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ item.date }}</div>
+              <div class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                {{ item.type }} — مسؤول: {{ item.responsible }}
+              </div>
+            </div>
+                        <div class="text-right">
+              <div class="text-sm text-slate-700 dark:text-slate-300">{{ item.start }} — {{ item.end }}</div>
+              <div class="mt-2">
+                <span class="inline-block rounded-full px-2 py-0.5 text-xs font-semibold" :class="statusColor(item.status as 'مجدولة' | 'مكتمل' | 'مؤجل')">
+                  {{ item.status }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- في حال مفيش نتائج -->
+      <p v-if="filteredData.length === 0" class="text-center text-sm text-slate-500 dark:text-slate-400">
+        لا توجد مواعيد مطابقة
+      </p>
+    </div>
+  </MainLayout>
 </template>
 
 <script setup lang="ts">

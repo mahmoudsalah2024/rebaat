@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="fixed bottom-0 w-full border-t border-slate-200/70 bg-white/80 py-3 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/95"
-            :class="[{ dark: isDark }, isRTL ? 'text-right' : 'text-left']" :dir="isRTL ? 'rtl' : 'ltr'"
             :lang="language">
             <div class="mx-auto flex max-w-6xl items-center justify-around px-4 sm:px-6 lg:px-8">
                 <router-link to="/"
@@ -62,70 +61,8 @@
 
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
-
-// Theme logic
-const theme = ref('light');
-const isDark = computed(() => theme.value === 'dark');
-
-const setTheme = (value: any) => {
-    theme.value = value;
-};
-
-const toggleTheme = () => {
-    setTheme(isDark.value ? 'light' : 'dark');
-};
-
-// Language logic
-const language: any = ref('ar');
-const isRTL = computed(() => language.value === 'ar');
-
-const toggleLanguage = () => {
-    language.value = isRTL.value ? 'en' : 'ar';
-};
-
-const content = computed(() => messages[language.value]);
-
-const messages = {
-    ar: {
-        toggles: {
-            light: 'وضع النهار',
-            dark: 'الوضع الليلي'
-        }
-    },
-    en: {
-        toggles: {
-            light: 'Light Mode',
-            dark: 'Dark Mode'
-        }
-    }
-};
-
-watch(theme, (value) => {
-    localStorage.setItem('theme', value);
-});
-
-watch(language, (value) => {
-    localStorage.setItem('language', value);
-});
-
-onMounted(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark' || storedTheme === 'light') {
-        setTheme(storedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-
-    const storedLanguage = localStorage.getItem('language');
-    if (storedLanguage === 'ar' || storedLanguage === 'en') {
-        language.value = storedLanguage;
-    } else if (navigator.language && navigator.language.toLowerCase().startsWith('ar')) {
-        language.value = 'ar';
-    } else {
-        language.value = 'en';
-    }
-});
+defineProps<{
+  theme: 'light' | 'dark';
+  language: 'ar' | 'en';
+}>();
 </script>

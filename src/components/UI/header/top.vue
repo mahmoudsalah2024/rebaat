@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="fixed top-0 z-[99999] w-full border-b border-slate-200/70 bg-slate-50/95 py-3 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/95"
-            :class="[{ dark: isDark }, isRTL ? 'text-right' : 'text-left']" :dir="isRTL ? 'rtl' : 'ltr'"
             :lang="language">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center gap-2">
@@ -14,8 +13,8 @@
                     </div>
                     <button
                         class="inline-flex rounded-full border border-slate-200 px-3 py-3 text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500">
-                        <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            fill="none" viewBox="0 0 24 24">
+                        <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z" />
                         </svg>
@@ -33,13 +32,13 @@
                 <div class="flex items-center gap-2">
                     <button
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
-                        type="button" @click="toggleTheme">
-                        {{ isDark ? content.toggles.light : content.toggles.dark }}
+                        type="button" @click="emit('toggle-theme')">
+                        {{ theme === 'dark' ? 'Light Mode' : 'Dark Mode' }}
                     </button>
                     <button
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
-                        type="button" @click="toggleLanguage">
-                        {{ isRTL ? 'EN' : 'AR' }}
+                        type="button" @click="emit('toggle-language')">
+                        {{ language === 'ar' ? 'EN' : 'AR' }}
                     </button>
                 </div>
             </div>
@@ -48,70 +47,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
+defineProps<{
+  theme: 'light' | 'dark';
+  language: 'ar' | 'en';
+}>();
 
-// Theme logic
-const theme = ref('light');
-const isDark = computed(() => theme.value === 'dark');
-
-const setTheme = (value: any) => {
-    theme.value = value;
-};
-
-const toggleTheme = () => {
-    setTheme(isDark.value ? 'light' : 'dark');
-};
-
-// Language logic
-const language: any = ref('ar');
-const isRTL = computed(() => language.value === 'ar');
-
-const toggleLanguage = () => {
-    language.value = isRTL.value ? 'en' : 'ar';
-};
-
-const content = computed(() => messages[language.value]);
-
-const messages = {
-    ar: {
-        toggles: {
-            light: 'وضع النهار',
-            dark: 'الوضع الليلي'
-        }
-    },
-    en: {
-        toggles: {
-            light: 'Light Mode',
-            dark: 'Dark Mode'
-        }
-    }
-};
-
-watch(theme, (value) => {
-    localStorage.setItem('theme', value);
-});
-
-watch(language, (value) => {
-    localStorage.setItem('language', value);
-});
-
-onMounted(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark' || storedTheme === 'light') {
-        setTheme(storedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-
-    const storedLanguage = localStorage.getItem('language');
-    if (storedLanguage === 'ar' || storedLanguage === 'en') {
-        language.value = storedLanguage;
-    } else if (navigator.language && navigator.language.toLowerCase().startsWith('ar')) {
-        language.value = 'ar';
-    } else {
-        language.value = 'en';
-    }
-});
+const emit = defineEmits<{
+  (event: 'toggle-theme'): void;
+  (event: 'toggle-language'): void;
+}>();
 </script>

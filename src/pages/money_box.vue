@@ -1,188 +1,228 @@
 <template>
     <MainLayout>
-        <div class="p-3 max-w-6xl mx-auto bg-white  rounded-lg" dir="rtl">
-            <p class="text-xl font-bold pb-1">صندوق البيت</p>
-            <section class="mb-4">
-                <div class="flex flex-col justify-evenly">
-                    <div v-if="outcome !== income">
-                        <div class="bg-gray-100 p-4 rounded-lg mt-4 text-start">
-                            <p class="mt-2 text-sm">
-                                رصيد
+        <div class="space-y-8" dir="rtl">
+            <section
+                class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">ملخص الحساب</p>
+                        <p class="mt-2 text-2xl font-bold">صندوق البيت</p>
+                    </div>
+                </div>
+                <div class="mt-8 flex flex-col gap-4">
+                    <div v-if="outcome !== income" class="rounded-2xl bg-slate-50 p-4 text-start dark:bg-slate-950">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">رصيد</p>
+                        <p class="mt-2 text-3xl font-semibold">
+                            {{ credit }}
+                            <span class="text-sm font-light text-slate-500 dark:text-slate-400">جنيه</span>
+                        </p>
+                    </div>
+                    <div class="grid gap-4 grid-cols-3">
+                        <div
+                            class="rounded-2xl border border-emerald-200/70 bg-emerald-50 p-4 text-start dark:border-emerald-900/30 dark:bg-emerald-900/20">
+                            <p class="text-sm text-emerald-700 dark:text-emerald-200">الأيرادات</p>
+                            <p class="mt-2 text-xl font-semibold">
+                                {{ income }}
+                                <span
+                                    class="text-sm font-light text-emerald-600/80 dark:text-emerald-200/80">جنيه</span>
                             </p>
-                            <p class="mt-2 text-4xl font-medium ">
-                                {{credit}}
-                                <span class="text-sm font-light">جنيه</span>
+                        </div>
+                        <div
+                            class="rounded-2xl border border-amber-200/70 bg-amber-50 p-4 text-start dark:border-amber-900/30 dark:bg-amber-900/20">
+                            <p class="text-sm text-slate-500 dark:text-slate-400">المصروفات</p>
+                            <p class="mt-2 text-xl font-semibold">
+                                {{ outcome }}
+                                <span class="text-sm font-light text-slate-500 dark:text-slate-400">جنيه</span>
+                            </p>
+                        </div>
+                        <div v-if="outcome === income"
+                            class="rounded-2xl border border-slate-200/70 bg-white p-4 text-start dark:border-slate-800 dark:bg-slate-900">
+                            <p class="text-sm text-slate-500 dark:text-slate-400">رصيد</p>
+                            <p class="mt-2 text-xl font-semibold">
+                                {{ credit }}
+                                <span class="text-sm font-light text-slate-500 dark:text-slate-400">جنيه</span>
+                            </p>
+                        </div>
+                        <div v-if="outcome !== income"
+                            class="rounded-2xl border border-red-200/70 bg-red-50 p-4 text-start dark:border-red-900/30 dark:bg-red-900/20">
+                            <p class="text-sm text-slate-500 dark:text-slate-400">مديونية</p>
+                            <p class="mt-2 text-xl font-semibold">
+                                {{ debited }}
+                                <span class="text-sm font-light text-slate-500 dark:text-slate-400">جنيه</span>
                             </p>
                         </div>
                     </div>
-                    <div class="flex justify-evenly gap-2">
-                        <div class="w-1/2">
-                            <div class="bg-green-100 p-4 rounded-lg mt-2 text-start">
-                                <p class="mt-2 text-sm">
-                                    الأيرادات
-                                </p>
-                                <p class="mt-2 text-xl font-medium">
-                                    {{income}}
-                                    <span class="text-sm font-light d-none d-sm-inline-block">جنيه</span>
-                                </p>
-                                <span class="text-sm font-light d-sm-none">جنيه</span>
-                            </div>
+                </div>
+            </section>
+            <section
+                class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-300">تفاصيل الحساب</p>
+                        <p class="mt-2 text-2xl font-bold">سجل الحركات</p>
+                    </div>
+                </div>
+                <div
+                    class="mt-6 overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
+                    <div style="z-index: 0 !important;">
+                        <!-- Flowbite Tabs Header -->
+                        <div role="tablist"
+                            class="border-b border-slate-200/70 bg-white/80 px-4 py-2 dark:border-slate-800 dark:bg-slate-900/80 flex gap-2">
+                            <button role="tab" @click="tab = 'one'" :aria-selected="tab === 'one'"
+                                aria-controls="panel-one"
+                                :class="tab === 'one' ? 'border-b-2 border-primary text-primary' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'"
+                                class="px-3 py-2 text-sm font-medium transition">الأيرادات</button>
+                            <button role="tab" @click="tab = 'two'" :aria-selected="tab === 'two'"
+                                aria-controls="panel-two"
+                                :class="tab === 'two' ? 'border-b-2 border-primary text-primary' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'"
+                                class="px-3 py-2 text-sm font-medium transition">المصروفات</button>
+                            <button role="tab" @click="tab = 'three'" :aria-selected="tab === 'three'"
+                                aria-controls="panel-three"
+                                :class="tab === 'three' ? 'border-b-2 border-primary text-primary' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'"
+                                class="px-3 py-2 text-sm font-medium transition">المديونية</button>
                         </div>
-                        <div class="w-1/2">
-                            <div class="bg-red-100 p-4 rounded-lg mt-2 text-start">
-                                <p class="mt-2 text-sm">
-                                    المصروفات
-                                </p>
-                                <p class="mt-2 text-xl font-medium">
-                                    {{outcome}}
-                                    <span class="text-sm font-light d-none d-sm-inline-block">جنيه</span>
-                                </p>
-                                <span class="text-sm font-light d-sm-none">جنيه</span>
+                        <!-- Flowbite Tabs Content -->
+                        <div class="p-4">
+                            <!-- Tab 1: الأيرادات -->
+                            <div v-show="tab === 'one'" role="tabpanel" id="panel-one">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border-collapse text-sm">
+                                        <thead>
+                                            <tr class="bg-emerald-600 text-white">
+                                                <th class="border border-emerald-700/40 p-2">الرقم</th>
+                                                <th class="border border-emerald-700/40 p-2">البند</th>
+                                                <th class="border border-emerald-700/40 p-2">الأيرادات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(invoice, i) in paginatedInvoices" :key="i"
+                                                class="bg-white even:bg-slate-50 dark:bg-slate-900 dark:even:bg-slate-950">
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ (currentPage - 1) * pageSize + i + 1 }}
+                                                </td>
+                                                <td class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200"
+                                                    v-for="(type, index) in types" :key="index">
+                                                    {{ type }}
+                                                </td>
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ invoice.income }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
+                                    <button @click="currentPage--" :disabled="currentPage === 1"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage === 1 }"
+                                        class="rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200">
+                                        السابق
+                                    </button>
+                                    <button @click="currentPage++"
+                                        :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize) }"
+                                        class="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700">
+                                        التالي
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div v-if="outcome === income" class="w-1/2">
-                            <div class="bg-gray-100 p-4 rounded-lg mt-2 text-start">
-                                <p class="mt-2 text-sm">
-                                    رصيد
-                                </p>
-                                <p class="mt-2 text-xl font-medium ">
-                                    {{credit}}
-                                    <span class="text-sm font-light d-none d-sm-inline-block">جنيه</span>
-                                </p>
-                                <span class="text-sm font-light d-sm-none">جنيه</span>
+                            <!-- Tab 2: المصروفات -->
+                            <div v-show="tab === 'two'" role="tabpanel" id="panel-two">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border-collapse text-sm">
+                                        <thead>
+                                            <tr class="bg-emerald-600 text-white">
+                                                <th class="border border-emerald-700/40 p-2">الرقم</th>
+                                                <th class="border border-emerald-700/40 p-2">المصروفات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(invoice, i) in paginatedInvoices" :key="i"
+                                                class="bg-white even:bg-slate-50 dark:bg-slate-900 dark:even:bg-slate-950">
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ (currentPage - 1) * pageSize + i + 1 }}
+                                                </td>
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ invoice.outcome }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
+                                    <button @click="currentPage--" :disabled="currentPage === 1"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage === 1 }"
+                                        class="rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200">
+                                        السابق
+                                    </button>
+                                    <button @click="currentPage++"
+                                        :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize) }"
+                                        class="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700">
+                                        التالي
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div v-if="outcome !== income" class="w-1/2">
-                            <div class="bg-gray-100 p-4 rounded-lg mt-2 text-start">
-                                <p class="mt-2 text-sm">
-                                    مديونية
-                                </p>
-                                <p class="mt-2 text-xl font-medium ">
-                                    {{debited}}
-                                    <span class="text-sm font-light d-none d-sm-inline-block">جنيه</span>
-                                </p>
-                                <span class="text-sm font-light d-sm-none">جنيه</span>
+                            <!-- Tab 3: المديونية -->
+                            <div v-show="tab === 'three'" role="tabpanel" id="panel-three">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border-collapse text-sm">
+                                        <thead>
+                                            <tr class="bg-emerald-600 text-white">
+                                                <th class="border border-emerald-700/40 p-2">الرقم</th>
+                                                <th class="border border-emerald-700/40 p-2">المديونية</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(invoice, i) in paginatedInvoices" :key="i"
+                                                class="bg-white even:bg-slate-50 dark:bg-slate-900 dark:even:bg-slate-950">
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ (currentPage - 1) * pageSize + i + 1 }}
+                                                </td>
+                                                <td
+                                                    class="border border-slate-200/70 p-2 text-slate-700 dark:border-slate-800 dark:text-slate-200">
+                                                    {{ invoice.income }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
+                                    <button @click="currentPage--" :disabled="currentPage === 1"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage === 1 }"
+                                        class="rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200">
+                                        السابق
+                                    </button>
+                                    <button @click="currentPage++"
+                                        :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
+                                        :class="{ 'opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize) }"
+                                        class="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700">
+                                        التالي
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <div style="z-index: 0 !important;">
-                <v-tabs color="primary" v-model="tab" class="mb-2">
-                    <v-tab value="one">الأيرادات</v-tab>
-                    <v-tab value="two">المصروفات</v-tab>
-                    <v-tab value="three">المديونية</v-tab>
-                </v-tabs>
-                <v-tabs-window v-model="tab">
-                    <v-tabs-window-item value="one">
-                        <table class="w-full border-collapse">
-                            <thead>
-                                <tr class="bg-indigo-500 dark:bg-indigo-700">
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        الرقم</th>
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        البند</th>
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        الأيرادات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(invoice, i) in paginatedInvoices" :key="i">
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">{{ (currentPage - 1) *
-                                        pageSize
-                                        + i + 1 }}</td>
-                                        <td class="border border-slate-300 dark:border-gray-600 p-2" v-for="(type,index) in types" :key="index">{{type}}</td>
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">{{ invoice.income }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="flex justify-center gap-4 mt-4">
-                            <button @click="currentPage--" :disabled="currentPage === 1"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage === 1, 'bg-indigo-500!': currentPage !== 1 }"
-                                class="px-4 py-2 dark:bg-indigo-700 text-white rounded-lg">السابق</button>
-                            <button @click="currentPage++" :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize), 'bg-indigo-500!': currentPage < Math.ceil(invoices.length / pageSize) }"
-                                class="px-4 py-2 bg-indigo-500! dark:bg-indigo-700 text-white rounded-lg">التالي</button>
-                        </div>
-                    </v-tabs-window-item>
-                    <v-tabs-window-item value="two">
-                        <table class="w-full border-collapse">
-                            <thead>
-                                <tr class="bg-indigo-500 dark:bg-indigo-700">
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        الرقم</th>
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        المصروفات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(invoice, i) in paginatedInvoices" :key="i">
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">{{ (currentPage - 1) *
-                                        pageSize
-                                        + i + 1 }}</td>
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">{{ invoice.outcome }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="flex justify-center gap-4 mt-4">
-                            <button @click="currentPage--" :disabled="currentPage === 1"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage === 1, 'bg-indigo-500!': currentPage !== 1 }"
-                                class="px-4 py-2 dark:bg-indigo-700 text-white rounded-lg">السابق</button>
-                            <button @click="currentPage++" :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize), 'bg-indigo-500!': currentPage < Math.ceil(invoices.length / pageSize) }"
-                                class="px-4 py-2 bg-indigo-500! dark:bg-indigo-700 text-white rounded-lg">التالي</button>
-                        </div>
-                    </v-tabs-window-item>
-                    <v-tabs-window-item value="three">
-                        <table class="w-full border-collapse">
-                            <thead>
-                                <tr class="bg-indigo-500 dark:bg-indigo-700">
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        الرقم</th>
-                                    <th
-                                        class="border border-slate-300 dark:border-gray-600 p-2 text-white dark:text-slate-200">
-                                        المديونية</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(invoice, i) in paginatedInvoices" :key="i">
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">
-                                        {{ (currentPage - 1) * pageSize + i + 1 }}</td>
-                                    <td class="border border-slate-300 dark:border-gray-600 p-2">{{ invoice.income }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="flex justify-center gap-4 mt-4">
-                            <button @click="currentPage--" :disabled="currentPage === 1"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage === 1, 'bg-indigo-500!': currentPage !== 1 }"
-                                class="px-4 py-2 dark:bg-indigo-700 text-white rounded-lg">السابق</button>
-                            <button @click="currentPage++" :disabled="currentPage >= Math.ceil(invoices.length / pageSize)"
-                                :class="{ 'bg-indigo-100! opacity-50 cursor-not-allowed': currentPage >= Math.ceil(invoices.length / pageSize), 'bg-indigo-500!': currentPage < Math.ceil(invoices.length / pageSize) }"
-                                class="px-4 py-2 bg-indigo-500! dark:bg-indigo-700 text-white rounded-lg">التالي</button>
-                        </div>
-                    </v-tabs-window-item>
-                </v-tabs-window>
-            </div>
         </div>
     </MainLayout>
 </template>
 
 <script setup lang="ts">
 import MainLayout from '@/layouts/MainLayout.vue';
-import {ref, computed} from 'vue'
+import { ref, computed } from 'vue'
 const tab = ref('one');
 const pageSize = ref(15);
 const currentPage = ref(1);
 const income = ref(25000);
 const outcome = ref(30000);
 const debited = ref(5000);
-const credit = ref (-5000);
+const credit = ref(-5000);
 const types = ['شهرية']
 const invoices = ref(
     Array.from({ length: 100 }, (_, i) => ({
