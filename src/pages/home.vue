@@ -69,7 +69,7 @@
               {{ $t('pages.home.alerts.elevator.description') }}
             </p>
             <router-link
-              to="/maintenance/[id]"
+              to="/maintenance"
               class="mt-4 inline-flex rounded-full bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700"
             >
               {{ $t('common.actions.details') }}
@@ -133,49 +133,13 @@
           </div>
         </div>
         <div class="mt-6 grid gap-4 grid-cols-2">
-          <div class="rounded-2xl border border-slate-200/70 bg-slate-50 p-5 text-start dark:border-slate-800 dark:bg-slate-950">
+          <div v-for="(id,index) in 4" :key="index" class="rounded-2xl border border-slate-200/70 bg-slate-50 p-5 text-start dark:border-slate-800 dark:bg-slate-950">
             <p class="text-lg font-semibold">{{ $t('pages.home.upcoming.date') }}</p>
             <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
               {{ $t('pages.home.upcoming.description') }}
             </p>
             <router-link
-              to="/maintenance/[id]"
-              class="mt-4 inline-flex rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200"
-            >
-              {{ $t('common.actions.details') }}
-            </router-link>
-          </div>
-          <div class="rounded-2xl border border-slate-200/70 bg-slate-50 p-5 text-start dark:border-slate-800 dark:bg-slate-950">
-            <p class="text-lg font-semibold">{{ $t('pages.home.upcoming.date') }}</p>
-            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
-              {{ $t('pages.home.upcoming.description') }}
-            </p>
-            <router-link
-              to="/maintenance/[id]"
-              class="mt-4 inline-flex rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200"
-            >
-              {{ $t('common.actions.details') }}
-            </router-link>
-          </div>
-          <div class="rounded-2xl border border-slate-200/70 bg-slate-50 p-5 text-start dark:border-slate-800 dark:bg-slate-950">
-            <p class="text-lg font-semibold">{{ $t('pages.home.upcoming.date') }}</p>
-            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
-              {{ $t('pages.home.upcoming.description') }}
-            </p>
-            <router-link
-              to="/maintenance/[id].vue"
-              class="mt-4 inline-flex rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200"
-            >
-              {{ $t('common.actions.details') }}
-            </router-link>
-          </div>
-          <div class="rounded-2xl border border-slate-200/70 bg-slate-50 p-5 text-start dark:border-slate-800 dark:bg-slate-950">
-            <p class="text-lg font-semibold">{{ $t('pages.home.upcoming.date') }}</p>
-            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
-              {{ $t('pages.home.upcoming.description') }}
-            </p>
-            <router-link
-              to="/maintenance/[id]"
+              :to="`/maintenance/${id}`"
               class="mt-4 inline-flex rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:border-emerald-400 dark:border-emerald-500/30 dark:text-emerald-200"
             >
               {{ $t('common.actions.details') }}

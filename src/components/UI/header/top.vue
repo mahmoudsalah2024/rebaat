@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="fixed top-0 z-[99999] w-full border-b border-slate-200/70 bg-slate-50/95 py-3 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/95"
+        <div class="fixed top-0 z-99999 w-full border-b border-slate-200/70 bg-slate-50/95 py-3 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/95"
             :lang="language">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center gap-2">
@@ -24,7 +24,6 @@
                 <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="whitespace-nowrap text-lg font-semibold text-slate-900 dark:text-slate-100">
                         {{ $t('layout.header.brandName') }}
-                        <v-badge color="warning" :content="$t('layout.header.badge')" text-color="white" inline></v-badge>
                     </span>
                 </a>
 
@@ -34,6 +33,7 @@
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
                         type="button" @click="emit('toggle-theme')">
                         {{ theme === 'dark' ? $t('common.theme.lightMode') : $t('common.theme.darkMode') }}
+
                     </button>
                     <button
                         class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
