@@ -28,7 +28,7 @@
                         </g>
                     </svg>
                 </router-link>
-                <router-link to="/forms/orderMaintenance"
+                <router-link to="/orderMaintenance"
                     class="inline-flex rounded-full bg-emerald-600 px-4 py-4 text-lg text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-700">
                     <svg class="h-7 w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@
                             clip-rule="evenodd" />
                     </svg>
                 </router-link>
-                <router-link to="/" 
+                <router-link to="/"
                     class="inline-flex rounded-full border border-transparent px-4 py-4 text-lg text-slate-600 transition hover:border-emerald-400 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400">
                     <svg class="h-7 w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="currentColor" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  theme: 'light' | 'dark';
-  language: 'ar' | 'en';
+    theme: 'light' | 'dark';
+    language: 'ar' | 'en';
 }>();
 </script>

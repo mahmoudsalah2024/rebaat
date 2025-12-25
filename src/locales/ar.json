@@ -4,6 +4,11 @@
       "brandName": "رِبـاط"
     }
   },
+  "admin": {
+    "sidebar": {
+      "complaints": "الشكاوى"
+    }
+  },
   "common": {
     "actions": {
       "viewDetails": "اطلع على التفاصيل",
@@ -135,6 +140,28 @@
         "income": "الأيرادات",
         "expenses": "المصروفات",
         "debt": "المديونية"
+      }
+    },
+    "complaints": {
+      "sectionLabel": "إدارة الشكاوى",
+      "title": "قائمة الشكاوى",
+      "search": {
+        "placeholder": "ابحث بالاسم، الشقة، النوع، أو التاريخ..."
+      },
+      "table": {
+        "id": "الرقم",
+        "name": "الاسم",
+        "apartment": "الشقة",
+        "type": "النوع",
+        "dateTime": "التاريخ والوقت",
+        "description": "الوصف",
+        "notes": "الملاحظات"
+      },
+      "empty": "لا توجد شكاوى",
+      "pagination": {
+        "previous": "السابق",
+        "next": "التالي",
+        "pageInfo": "صفحة {current} من {total}"
       }
     }
   },

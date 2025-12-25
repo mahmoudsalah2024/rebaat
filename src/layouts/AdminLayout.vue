@@ -2,25 +2,43 @@
   <div
     class="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100"
     :class="[{ dark: isDark }, isRTL ? 'text-right' : 'text-left']" :dir="isRTL ? 'rtl' : 'ltr'" :lang="language">
-    <UIHeaderTop :language="language" :theme="theme" @toggle-language="toggleLanguage" @toggle-theme="toggleTheme" />
-    <main class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-      <slot />
-    </main>
-    <UIHeaderBottom :language="language" :theme="theme" />
+    <AdminSidebar :is-open="sidebarOpen" :is-r-t-l="isRTL" :is-mobile="isMobile" @toggle="toggleSidebar" />
+    <div :class="[
+      'transition-all duration-300',
+      sidebarOpen ? (isMobile ? '' : 'ml-64') : (isMobile ? '' : 'ml-16')
+    ]" :style="{ [isRTL ? 'marginRight' : 'marginLeft']: isMobile ? '0' : (sidebarOpen ? '256px' : '64px'), [isRTL ? 'marginLeft' : 'marginRight']: '0' }">
+      <UIHeaderTop :language="language" :theme="theme" @toggle-language="toggleLanguage" @toggle-theme="toggleTheme" />
+      <main class="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:px-8">
+        <slot />
+      </main>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import UIHeaderTop from '@/shared/components/header/top.vue';
-import UIHeaderBottom from '@/shared/components/header/bottom.vue';
+import UIHeaderTop from '@/shared/components/admin/header/top.vue';
+import AdminSidebar from '@/shared/components/admin/sidebar/AdminSidebar.vue';
 
 const theme = ref<'light' | 'dark'>('light');
 const language = ref<'ar' | 'en'>('ar');
+const sidebarOpen = ref(true);
+const isMobile = ref(false);
 const { locale } = useI18n({ useScope: 'global' });
 
 const isDark = computed(() => theme.value === 'dark');
 const isRTL = computed(() => language.value === 'ar');
+
+const toggleSidebar = () => {
+  sidebarOpen.value = !sidebarOpen.value;
+};
+
+const updateMobileState = () => {
+  isMobile.value = window.innerWidth < 1024;
+  if (isMobile.value) {
+    sidebarOpen.value = false;
+  }
+};
 
 const toggleTheme = () => {
   theme.value = isDark.value ? 'light' : 'dark';
@@ -68,5 +86,8 @@ onMounted(() => {
   } else {
     language.value = 'en';
   }
+
+  updateMobileState();
+  window.addEventListener('resize', updateMobileState);
 });
 </script>

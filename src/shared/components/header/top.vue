@@ -21,24 +21,37 @@
                     </button>
                 </div>
 
-                <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <span class="whitespace-nowrap text-lg font-semibold text-slate-900 dark:text-slate-100">
                         {{ $t('layout.header.brandName') }}
                     </span>
-                </a>
+                </RouterLink>
 
                 <!-- Toggle UI -->
                 <div class="flex items-center gap-2">
                     <button
-                        class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
-                        type="button" @click="emit('toggle-theme')">
-                        {{ theme === 'dark' ? $t('common.theme.lightMode') : $t('common.theme.darkMode') }}
-
+                        class="inline-flex rounded-full border border-slate-200 px-3 py-3 text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
+                        type="button" @click="emit('toggle-theme')"
+                        :aria-label="theme === 'dark' ? $t('common.theme.lightMode') : $t('common.theme.darkMode')"
+                        :title="theme === 'dark' ? $t('common.theme.lightMode') : $t('common.theme.darkMode')">
+                        <svg v-if="theme === 'dark'" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg v-else class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
                     </button>
                     <button
-                        class="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
-                        type="button" @click="emit('toggle-language')">
-                        {{ language === 'ar' ? $t('common.language.enShort') : $t('common.language.arShort') }}
+                        class="inline-flex rounded-full border border-slate-200 px-3 py-3 text-slate-700 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-emerald-500"
+                        type="button" @click="emit('toggle-language')"
+                        :aria-label="language === 'ar' ? $t('common.language.enShort') : $t('common.language.arShort')"
+                        :title="language === 'ar' ? $t('common.language.enShort') : $t('common.language.arShort')">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                        </svg>
                     </button>
                 </div>
             </div>

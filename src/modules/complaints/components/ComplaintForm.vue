@@ -1,5 +1,4 @@
 <template>
-  <MainLayout>
     <div class="space-y-6">
       <section class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div class="flex flex-wrap items-center justify-between gap-4">
@@ -82,23 +81,11 @@
         </div>
       </form>
     </div>
-  </MainLayout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import MainLayout from '@/layouts/MainLayout.vue';
-interface ComplaintForm {
-  fullName: string;
-  phone: string;
-  email: string;
-  apartmentNumber: string;
-  complaintType: string;
-  problemDescription: string;
-  complaintDate: string;
-  complaintTime: string;
-  notes: string;
-}
+import type { ComplaintForm } from '../types/complaintForm.model';
 
 const form = ref<ComplaintForm>({
   fullName: '',

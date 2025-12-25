@@ -4,6 +4,11 @@
       "brandName": "Ribat"
     }
   },
+  "admin": {
+    "sidebar": {
+      "complaints": "Complaints"
+    }
+  },
   "common": {
     "actions": {
       "viewDetails": "View details",
@@ -135,6 +140,28 @@
         "income": "Income",
         "expenses": "Expenses",
         "debt": "Debt"
+      }
+    },
+    "complaints": {
+      "sectionLabel": "Complaints Management",
+      "title": "Complaints List",
+      "search": {
+        "placeholder": "Search by name, apartment, type, or date..."
+      },
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "apartment": "Apartment",
+        "type": "Type",
+        "dateTime": "Date & Time",
+        "description": "Description",
+        "notes": "Notes"
+      },
+      "empty": "No complaints found",
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageInfo": "Page {current} of {total}"
       }
     }
   },
