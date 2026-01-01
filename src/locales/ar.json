@@ -11,7 +11,7 @@
   },
   "common": {
     "actions": {
-      "viewDetails": "اطلع على التفاصيل",
+      "viewDetails": "عرض",
       "details": "تفاصيل",
       "previous": "السابق",
       "next": "التالي"
