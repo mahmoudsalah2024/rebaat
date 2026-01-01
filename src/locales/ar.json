@@ -162,6 +162,18 @@
         "previous": "السابق",
         "next": "التالي",
         "pageInfo": "صفحة {current} من {total}"
+      },
+      "details": {
+        "title": "تفاصيل الشكوى",
+        "subtitle": "عرض الشكوى رقم {id}",
+        "backToList": "العودة لقائمة الشكاوى",
+        "contactInfo": "بيانات التواصل",
+        "complaintInfo": "بيانات الشكوى",
+        "reportedAt": "تاريخ الإدخال",
+        "dateTime": "تاريخ ووقت المشكلة",
+        "description": "وصف المشكلة",
+        "notes": "ملاحظات",
+        "notFound": "الشكوى غير موجودة"
       }
     }
   },
