@@ -33,6 +33,7 @@
               <th class="px-4 py-3">{{ $t('pages.complaints.table.dateTime') }}</th>
               <th class="px-4 py-3">{{ $t('pages.complaints.table.description') }}</th>
               <th class="px-4 py-3">{{ $t('pages.complaints.table.notes') }}</th>
+              <th class="px-4 py-3">{{ $t('common.actions.details') }}</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -46,6 +47,14 @@
                 complaint.complaintTime }}</td>
               <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</td>
               <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.notes }}</td>
+              <td class="px-4 py-3 text-right">
+                <RouterLink
+                  :to="`/complaints/${complaint.id}`"
+                  class="inline-flex items-center rounded-full bg-emerald-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+                >
+                  {{ $t('common.actions.viewDetails') }}
+                </RouterLink>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -71,6 +80,12 @@
           <div class="mt-3 text-sm text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</div>
           <div v-if="complaint.notes" class="mt-2 text-xs text-slate-500 dark:text-slate-400">{{ complaint.notes }}
           </div>
+          <RouterLink
+            :to="`/complaints/${complaint.id}`"
+            class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+          >
+            {{ $t('common.actions.viewDetails') }}
+          </RouterLink>
         </div>
       </div>
 
