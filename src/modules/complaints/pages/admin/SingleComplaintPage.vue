@@ -14,12 +14,21 @@
               {{ $t('pages.complaints.details.subtitle', { id: complaint.id }) }}
             </p>
           </div>
-          <RouterLink
-            to="/complaints/list"
-            class="rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50 dark:border-emerald-500/30 dark:text-emerald-200 dark:hover:bg-emerald-900/30"
-          >
-            {{ $t('pages.complaints.details.backToList') }}
-          </RouterLink>
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              v-if="complaint"
+              :href="`tel:${complaint.phone}`"
+              class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            >
+              {{ $t('pages.complaints.details.callUser') }}
+            </a>
+            <RouterLink
+              to="/complaints/list"
+              class="rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50 dark:border-emerald-500/30 dark:text-emerald-200 dark:hover:bg-emerald-900/30"
+            >
+              {{ $t('pages.complaints.details.backToList') }}
+            </RouterLink>
+          </div>
         </div>
 
         <div v-if="complaint" class="mt-6 grid gap-4 sm:grid-cols-3">
@@ -64,8 +73,14 @@
         <section
           class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between gap-3">
             <h2 class="text-lg font-semibold">{{ $t('pages.complaints.details.contactInfo') }}</h2>
+            <a
+              :href="`tel:${complaint.phone}`"
+              class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+            >
+              {{ $t('pages.complaints.details.callUser') }}
+            </a>
           </div>
           <dl class="mt-4 space-y-3">
             <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-950">
