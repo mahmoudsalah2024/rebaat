@@ -33,6 +33,7 @@
               <th class="px-4 py-3">{{ $t('pages.complaints.table.dateTime') }}</th>
               <th class="px-4 py-3">{{ $t('pages.complaints.table.description') }}</th>
               <th class="px-4 py-3">{{ $t('pages.complaints.table.notes') }}</th>
+              <th class="px-4 py-3">{{ $t('common.actions.details') }}</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -46,6 +47,14 @@
                 complaint.complaintTime }}</td>
               <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</td>
               <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.notes }}</td>
+              <td class="px-4 py-3 text-right">
+                <RouterLink
+                  :to="`/complaints/${complaint.id}`"
+                  class="inline-flex items-center rounded-full bg-emerald-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+                >
+                  {{ $t('common.actions.viewDetails') }}
+                </RouterLink>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -71,6 +80,12 @@
           <div class="mt-3 text-sm text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</div>
           <div v-if="complaint.notes" class="mt-2 text-xs text-slate-500 dark:text-slate-400">{{ complaint.notes }}
           </div>
+          <RouterLink
+            :to="`/complaints/${complaint.id}`"
+            class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+          >
+            {{ $t('common.actions.viewDetails') }}
+          </RouterLink>
         </div>
       </div>
 
@@ -116,140 +131,10 @@
 <script setup lang="ts">
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import { ref, computed } from 'vue';
+import { mockComplaints } from '@/modules/complaints/api/complaints.mock';
 import type { ComplaintData } from '@/modules/complaints/types/complaintData.model';
 
-const complaints = ref<ComplaintData[]>([
-  {
-    id: '1',
-    fullName: 'Ahmed Hassan',
-    phone: '+966501234567',
-    email: 'ahmed@example.com',
-    apartmentNumber: '101',
-    complaintType: 'Noise',
-    problemDescription: 'Excessive noise from neighboring unit',
-    complaintDate: '2024-01-15',
-    complaintTime: '14:30',
-    notes: 'Follow up required',
-    createdAt: new Date('2024-01-15'),
-  },
-  {
-    id: '2',
-    fullName: 'Fatima Al-Otaibi',
-    phone: '+966502345678',
-    email: 'fatima@example.com',
-    apartmentNumber: '205',
-    complaintType: 'Maintenance',
-    problemDescription: 'Broken water pipe in bathroom',
-    complaintDate: '2024-01-14',
-    complaintTime: '10:15',
-    notes: 'Urgent repair needed',
-    createdAt: new Date('2024-01-14'),
-  },
-  {
-    id: '3',
-    fullName: 'Mohammed Ibrahim',
-    phone: '+966503456789',
-    email: 'mohammed@example.com',
-    apartmentNumber: '302',
-    complaintType: 'Cleanliness',
-    problemDescription: 'Common areas not cleaned properly',
-    complaintDate: '2024-01-13',
-    complaintTime: '09:00',
-    notes: 'Assign cleaning staff',
-    createdAt: new Date('2024-01-13'),
-  },
-  {
-    id: '4',
-    fullName: 'Layla Ahmed',
-    phone: '+966504567890',
-    email: 'layla@example.com',
-    apartmentNumber: '103',
-    complaintType: 'Electricity',
-    problemDescription: 'Power outage in kitchen',
-    complaintDate: '2024-01-12',
-    complaintTime: '16:45',
-    notes: 'Check circuit breaker',
-    createdAt: new Date('2024-01-12'),
-  },
-  {
-    id: '5',
-    fullName: 'Omar Khalil',
-    phone: '+966505678901',
-    email: 'omar@example.com',
-    apartmentNumber: '401',
-    complaintType: 'Pest Control',
-    problemDescription: 'Cockroaches in kitchen area',
-    complaintDate: '2024-01-11',
-    complaintTime: '11:20',
-    notes: 'Schedule pest control visit',
-    createdAt: new Date('2024-01-11'),
-  },
-  {
-    id: '6',
-    fullName: 'Noor Saeed',
-    phone: '+966506789012',
-    email: 'noor@example.com',
-    apartmentNumber: '204',
-    complaintType: 'Parking',
-    problemDescription: 'Unauthorized vehicle in reserved spot',
-    complaintDate: '2024-01-10',
-    complaintTime: '13:30',
-    notes: 'Issue parking violation notice',
-    createdAt: new Date('2024-01-10'),
-  },
-  {
-    id: '7',
-    fullName: 'Salim Abdullah',
-    phone: '+966507890123',
-    email: 'salim@example.com',
-    apartmentNumber: '305',
-    complaintType: 'Plumbing',
-    problemDescription: 'Leaking faucet in bathroom',
-    complaintDate: '2024-01-09',
-    complaintTime: '15:00',
-    notes: 'Replace faucet',
-    createdAt: new Date('2024-01-09'),
-  },
-  {
-    id: '8',
-    fullName: 'Hana Mustafa',
-    phone: '+966508901234',
-    email: 'hana@example.com',
-    apartmentNumber: '102',
-    complaintType: 'Heating',
-    problemDescription: 'Heater not working properly',
-    complaintDate: '2024-01-08',
-    complaintTime: '12:15',
-    notes: 'Winter emergency repair',
-    createdAt: new Date('2024-01-08'),
-  },
-  {
-    id: '9',
-    fullName: 'Karim Hassan',
-    phone: '+966509012345',
-    email: 'karim@example.com',
-    apartmentNumber: '403',
-    complaintType: 'Internet',
-    problemDescription: 'Slow internet connection',
-    complaintDate: '2024-01-07',
-    complaintTime: '17:45',
-    notes: 'Contact ISP',
-    createdAt: new Date('2024-01-07'),
-  },
-  {
-    id: '10',
-    fullName: 'Rania Khalid',
-    phone: '+966510123456',
-    email: 'rania@example.com',
-    apartmentNumber: '206',
-    complaintType: 'Security',
-    problemDescription: 'Broken lobby door lock',
-    complaintDate: '2024-01-06',
-    complaintTime: '08:30',
-    notes: 'Replace lock immediately',
-    createdAt: new Date('2024-01-06'),
-  },
-]);
+const complaints = ref<ComplaintData[]>(mockComplaints);
 
 const searchQuery = ref('')
 const itemsPerPage = 4
