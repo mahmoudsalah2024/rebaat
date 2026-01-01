@@ -162,6 +162,24 @@
         "previous": "Previous",
         "next": "Next",
         "pageInfo": "Page {current} of {total}"
+      },
+      "details": {
+        "title": "Complaint details",
+        "subtitle": "Viewing complaint #{id}",
+        "backToList": "Back to complaints",
+        "contactInfo": "Contact information",
+        "complaintInfo": "Complaint information",
+        "reportedAt": "Reported at",
+        "dateTime": "Issue date & time",
+        "description": "Issue description",
+        "notes": "Notes",
+        "notFound": "Complaint not found",
+        "callUser": "Call user",
+        "sendNoteTitle": "Send a note",
+        "sendNoteDescription": "Share a quick update with the resident about this complaint.",
+        "notePlaceholder": "Type your note to the resident...",
+        "sendNoteAction": "Send note",
+        "noteSent": "Note sent"
       }
     }
   },
