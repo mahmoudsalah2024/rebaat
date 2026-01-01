@@ -137,6 +137,39 @@
             </p>
           </div>
         </section>
+
+        <section
+          class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="flex items-center justify-between gap-3">
+            <h2 class="text-lg font-semibold">{{ $t('pages.complaints.details.sendNoteTitle') }}</h2>
+            <span v-if="noteSent" class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-200">
+              {{ $t('pages.complaints.details.noteSent') }}
+            </span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            {{ $t('pages.complaints.details.sendNoteDescription') }}
+          </p>
+          <textarea
+            v-model="adminNote"
+            rows="4"
+            class="mt-4 w-full rounded-2xl border border-slate-200 bg-white p-3 text-sm text-slate-800 placeholder-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder-slate-500"
+            :placeholder="$t('pages.complaints.details.notePlaceholder')"
+          />
+          <button
+            type="button"
+            @click="sendNote"
+            :disabled="!adminNote.trim()"
+            class="mt-4 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition"
+            :class="[
+              adminNote.trim()
+                ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                : 'cursor-not-allowed bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-600'
+            ]"
+          >
+            {{ $t('pages.complaints.details.sendNoteAction') }}
+          </button>
+        </section>
       </div>
     </div>
   </AdminLayout>
@@ -144,7 +177,7 @@
 
 <script setup lang="ts">
 import AdminLayout from '@/layouts/AdminLayout.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { mockComplaints } from '@/modules/complaints/api/complaints.mock';
 import type { ComplaintData } from '@/modules/complaints/types/complaintData.model';
@@ -155,6 +188,14 @@ const id = route.params.id as string;
 const complaints: ComplaintData[] = mockComplaints;
 
 const complaint = computed(() => complaints.find((item) => item.id === id));
+
+const adminNote = ref('');
+const noteSent = ref(false);
+
+const sendNote = () => {
+  if (!complaint.value || !adminNote.value.trim()) return;
+  noteSent.value = true;
+};
 
 const reportedAt = computed(() => {
   if (!complaint.value) return '';
