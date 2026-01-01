@@ -14,11 +14,7 @@
                 {{ $t('pages.complaints.details.subtitle', { id: complaint?.id }) }}
               </p>
             </div>
-            <div class="flex flex-wrap items-center gap-3">
-              <a v-if="complaint" :href="`tel:${complaint?.phone}`"
-                class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700">
-                {{ $t('pages.complaints.details.callUser') }}
-              </a>
+            <div>
               <RouterLink to="/complaints/list"
                 class="rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50 dark:border-emerald-500/30 dark:text-emerald-200 dark:hover:bg-emerald-900/30">
                 {{ $t('pages.complaints.details.backToList') }}
