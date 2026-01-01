@@ -64,14 +64,8 @@
         <section
           class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center justify-between">
             <h2 class="text-lg font-semibold">{{ $t('pages.complaints.details.contactInfo') }}</h2>
-            <a
-              :href="`tel:${complaint.phone}`"
-              class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
-            >
-              {{ $t('pages.complaints.details.callUser') }}
-            </a>
           </div>
           <dl class="mt-4 space-y-3">
             <div class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-950">

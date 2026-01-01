@@ -11,7 +11,7 @@
   },
   "common": {
     "actions": {
-      "viewDetails": "View details",
+      "viewDetails": "View",
       "details": "Details",
       "previous": "Previous",
       "next": "Next"
@@ -173,13 +173,7 @@
         "dateTime": "Issue date & time",
         "description": "Issue description",
         "notes": "Notes",
-        "notFound": "Complaint not found",
-        "callUser": "Call user",
-        "sendNoteTitle": "Send a note",
-        "sendNoteDescription": "Share a quick update with the resident about this complaint.",
-        "notePlaceholder": "Type your note to the resident...",
-        "sendNoteAction": "Send note",
-        "noteSent": "Note sent"
+        "notFound": "Complaint not found"
       }
     }
   },

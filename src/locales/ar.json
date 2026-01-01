@@ -11,7 +11,7 @@
   },
   "common": {
     "actions": {
-      "viewDetails": "اطلع على التفاصيل",
+      "viewDetails": "عرض",
       "details": "تفاصيل",
       "previous": "السابق",
       "next": "التالي"
@@ -173,13 +173,7 @@
         "dateTime": "تاريخ ووقت المشكلة",
         "description": "وصف المشكلة",
         "notes": "ملاحظات",
-        "notFound": "الشكوى غير موجودة",
-        "callUser": "الاتصال بالمستخدم",
-        "sendNoteTitle": "إرسال ملاحظة",
-        "sendNoteDescription": "شارك تحديثًا سريعًا مع المقيم حول هذه الشكوى.",
-        "notePlaceholder": "اكتب ملاحظتك للمقيم...",
-        "sendNoteAction": "إرسال الملاحظة",
-        "noteSent": "تم الإرسال"
+        "notFound": "الشكوى غير موجودة"
       }
     }
   },

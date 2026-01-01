@@ -26,31 +26,31 @@
         <table class="min-w-full text-sm text-right">
           <thead class="bg-emerald-600 text-white">
             <tr>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.id') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.name') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.apartment') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.type') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.dateTime') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.description') }}</th>
-              <th class="px-4 py-3">{{ $t('pages.complaints.table.notes') }}</th>
-              <th class="px-4 py-3">{{ $t('common.actions.details') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.id') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.name') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.apartment') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.type') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.dateTime') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.description') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('pages.complaints.table.notes') }}</th>
+              <th class="text-start px-4 py-3">{{ $t('common.actions.details') }}</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
             <tr v-for="complaint in paginatedData" :key="complaint.id"
               class="bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950">
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.id }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.fullName }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.apartmentNumber }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.complaintType }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.complaintDate }} {{
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.id }}</td>
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.fullName }}</td>
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.apartmentNumber }}</td>
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.complaintType }}</td>
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.complaintDate }} {{
                 complaint.complaintTime }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</td>
-              <td class="px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.notes }}</td>
-              <td class="px-4 py-3 text-right">
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.problemDescription }}</td>
+              <td class="text-start px-4 py-3 text-slate-700 dark:text-slate-200">{{ complaint.notes }}</td>
+              <td class="text-start px-4 py-3 text-right">
                 <RouterLink
                   :to="`/complaints/${complaint.id}`"
-                  class="inline-flex items-center rounded-full bg-emerald-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
+                  class="inline-flex items-center rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700"
                 >
                   {{ $t('common.actions.viewDetails') }}
                 </RouterLink>
