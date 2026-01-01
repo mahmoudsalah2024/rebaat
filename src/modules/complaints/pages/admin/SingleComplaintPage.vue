@@ -1,6 +1,6 @@
 <template>
   <AdminLayout>
-    <div class="space-y-6">
+    <div class="space-y-6 py-6">
       <section
         class="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
       >
