@@ -173,7 +173,13 @@
         "dateTime": "تاريخ ووقت المشكلة",
         "description": "وصف المشكلة",
         "notes": "ملاحظات",
-        "notFound": "الشكوى غير موجودة"
+        "notFound": "الشكوى غير موجودة",
+        "callUser": "الاتصال بالمستخدم",
+        "sendNoteTitle": "إرسال ملاحظة",
+        "sendNoteDescription": "شارك تحديثًا سريعًا مع المقيم حول هذه الشكوى.",
+        "notePlaceholder": "اكتب ملاحظتك للمقيم...",
+        "sendNoteAction": "إرسال الملاحظة",
+        "noteSent": "تم الإرسال"
       }
     }
   },
